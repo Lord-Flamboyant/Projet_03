@@ -22,6 +22,8 @@ public class ListNeighbourActivity extends AppCompatActivity {
     Toolbar mToolbar;
     @BindView(R.id.container)
     ViewPager mViewPager;
+    /*** zone test*/
+    public TabLayout mTabLayoutitem1;
 
 
     ListNeighbourPagerAdapter mPagerAdapter;
@@ -31,6 +33,9 @@ public class ListNeighbourActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_list_neighbour);
         ButterKnife.bind(this);
+
+        /***Zone test*/
+        mTabLayoutitem1 = findViewById(R.id.tabItem);
 
         setSupportActionBar(mToolbar);
         mPagerAdapter = new ListNeighbourPagerAdapter(getSupportFragmentManager());
