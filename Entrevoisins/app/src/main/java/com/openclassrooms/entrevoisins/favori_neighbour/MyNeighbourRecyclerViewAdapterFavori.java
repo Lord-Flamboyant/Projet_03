@@ -26,6 +26,8 @@ public class MyNeighbourRecyclerViewAdapterFavori extends RecyclerView.Adapter<M
 
 
     private List<Neighbour> mNeighbours;
+    private Neighbour mNeighbour;
+
 
     public MyNeighbourRecyclerViewAdapterFavori(List<Neighbour> items) {
         mNeighbours = items;
