@@ -1,14 +1,10 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.os.Parcelable;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.CardView;
-import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
@@ -20,15 +16,6 @@ import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourGenerator;
-import com.openclassrooms.entrevoisins.service.NeighbourApiService;
-
-import org.greenrobot.eventbus.EventBus;
-
-import java.util.List;
-
-import butterknife.BindView;
 
 
 public class ActivityInformationNeighbour extends AppCompatActivity {
@@ -94,7 +81,7 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         mNumberPhoneNeighbour.setText(neighbour.getPhoneNumber());
         mAdressNet.setText("Facebook.fr/" + neighbour.getName());
         mDetailView.setText(neighbour.getAboutMe());
-        mFavNeighbour = neighbour.getFav();
+        mFavNeighbour = neighbour.getFav(true);
         mId = neighbour.getId();
 
 

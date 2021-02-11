@@ -19,11 +19,6 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      * @return
      */
 
-  /***  @Override
-    public Fragment getItem(int position) {
-    return NeighbourFragment.newInstance();
-    }
-   */
   /*** test double screen */
   @Override
   public Fragment getItem(int position) {

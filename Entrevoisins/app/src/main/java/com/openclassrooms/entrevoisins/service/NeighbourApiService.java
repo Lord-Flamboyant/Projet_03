@@ -36,4 +36,5 @@ public interface NeighbourApiService {
 
     void deleteFavNeighbour(Neighbour neighbour);
 
+    List<Neighbour> getFavNeighbours();
 }

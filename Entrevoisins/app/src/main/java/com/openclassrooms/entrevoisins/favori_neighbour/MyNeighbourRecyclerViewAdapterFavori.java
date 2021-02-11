@@ -27,6 +27,7 @@ public class MyNeighbourRecyclerViewAdapterFavori extends RecyclerView.Adapter<M
 
     private List<Neighbour> mNeighbours;
 
+
     public MyNeighbourRecyclerViewAdapterFavori(List<Neighbour> items) {
         mNeighbours = items;
     }
@@ -46,14 +47,6 @@ public class MyNeighbourRecyclerViewAdapterFavori extends RecyclerView.Adapter<M
                 .load(neighbour.getAvatarUrl())
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
-
-
-        holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
-            }
-        });
     }
 
 
@@ -69,8 +62,6 @@ public class MyNeighbourRecyclerViewAdapterFavori extends RecyclerView.Adapter<M
         public ImageView mNeighbourAvatar;
         @BindView(R.id.item_list_name)
         public TextView mNeighbourName;
-        @BindView(R.id.item_list_delete_button)
-        public ImageButton mDeleteButton;
 
         public ViewHolder(View view) {
             super(view);

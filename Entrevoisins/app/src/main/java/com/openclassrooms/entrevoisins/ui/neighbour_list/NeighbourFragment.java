@@ -99,11 +99,11 @@ public class NeighbourFragment extends Fragment {
         ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
-                    public void onItemClicked(RecyclerView recyclerView, int position, View v) {
+                    public void onItemClicked(RecyclerView recyclerView, int id, View v) {
                         Intent intent = new Intent(getContext(),ActivityInformationNeighbour.class);
-                        intent.putExtra("infoNeighbour",mNeighbours.get(position));
-                        intent.putExtra("position",position);
-                       Log.e(getClass().getSimpleName(),mNeighbours.get(position).getName());
+                        intent.putExtra("infoNeighbour",mNeighbours.get(id));
+                        intent.putExtra("position",id);
+                       Log.e(getClass().getSimpleName(),mNeighbours.get(id).getName());
                        startActivity(intent);
                     }
                 });

@@ -6,18 +6,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
-
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
-import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-
 import org.greenrobot.eventbus.EventBus;
-
 
 import java.util.List;
 
@@ -51,12 +46,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
 
-        if (neighbour.Fav== true) {
-            holder.mStartlike.setImageResource(R.drawable.ic_star_white_24dp);
-        }else if (neighbour.Fav == false) {
-            holder.mStartlike.setImageResource(R.drawable.ic_star_border_white_24dp);
-        }
-
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,27 +53,12 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
 
-        holder.mStartlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (neighbour.Fav == true){
-                    holder.mStartlike.setImageResource(R.drawable.ic_star_border_white_24dp);
-                    DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
-                }else if (neighbour.Fav == false) {
-                    holder.mStartlike.setImageResource(R.drawable.ic_star_white_24dp);
-                    DI.getNeighbourApiService().addFavNeighbour(neighbour);
-                    }
-            }
-        });
     }
-
 
     @Override
     public int getItemCount() {
         return mNeighbours.size();
     }
-
-
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.item_list_avatar)
@@ -93,8 +67,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         public TextView mNeighbourName;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
-        @BindView(R.id.Star_like)
-        public ImageView mStartlike;
 
         public ViewHolder(View view) {
             super(view);
