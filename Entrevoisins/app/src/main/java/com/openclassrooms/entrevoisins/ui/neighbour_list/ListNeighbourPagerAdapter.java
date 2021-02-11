@@ -4,7 +4,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.favori_neighbour.NeighbourFragmentFav;
 
 
 public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
@@ -18,10 +18,25 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
      * @param position
      * @return
      */
-    //@Override
-    //public Fragment getItem(int position) {
-    //return NeighbourFragment.newInstance();
-    //}
+
+  /***  @Override
+    public Fragment getItem(int position) {
+    return NeighbourFragment.newInstance();
+    }
+   */
+  /*** test double screen */
+  @Override
+  public Fragment getItem(int position) {
+      switch (position) {
+          case 0:
+              return NeighbourFragment.newInstance();
+          case 1:
+              return NeighbourFragmentFav.newInstance();
+
+
+      }
+      return null;
+  }
 
     /**
      * get the number of pages
@@ -33,16 +48,5 @@ public class ListNeighbourPagerAdapter extends FragmentPagerAdapter {
         return 2;
     }
 
-    @Override
-    public Fragment getItem(int position) {
-        switch (position) {
-            case 0:
-                return NeighbourFragment.newInstance();
-            case 1:
-                return NeighbourFragmentFav.newInstance();
 
-
-        }
-        return null;
-    }
 }
