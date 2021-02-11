@@ -51,12 +51,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
                 .apply(RequestOptions.circleCropTransform())
                 .into(holder.mNeighbourAvatar);
 
-        if (neighbour.Fav== true) {
-            holder.mStartlike.setImageResource(R.drawable.ic_star_white_24dp);
-        }else if (neighbour.Fav == false) {
-            holder.mStartlike.setImageResource(R.drawable.ic_star_border_white_24dp);
-        }
-
         holder.mDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -64,18 +58,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
             }
         });
 
-        holder.mStartlike.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (neighbour.Fav == true){
-                    holder.mStartlike.setImageResource(R.drawable.ic_star_border_white_24dp);
-                    DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
-                }else if (neighbour.Fav == false) {
-                    holder.mStartlike.setImageResource(R.drawable.ic_star_white_24dp);
-                    DI.getNeighbourApiService().addFavNeighbour(neighbour);
-                    }
-            }
-        });
     }
 
 
@@ -93,8 +75,6 @@ public class MyNeighbourRecyclerViewAdapter extends RecyclerView.Adapter<MyNeigh
         public TextView mNeighbourName;
         @BindView(R.id.item_list_delete_button)
         public ImageButton mDeleteButton;
-        @BindView(R.id.Star_like)
-        public ImageView mStartlike;
 
         public ViewHolder(View view) {
             super(view);
