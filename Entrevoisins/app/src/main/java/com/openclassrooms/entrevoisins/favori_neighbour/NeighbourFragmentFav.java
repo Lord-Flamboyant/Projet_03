@@ -1,4 +1,4 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins.favori_neighbour;
 
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +17,8 @@ import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.events.DeleteNeighbourEvent;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.ActivityInformationNeighbour;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.MyNeighbourRecyclerViewAdapter;
 import com.openclassrooms.entrevoisins.utils.ItemClickSupport;
 
 import org.greenrobot.eventbus.EventBus;
@@ -24,8 +26,7 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
-
-public class NeighbourFragment extends Fragment {
+public class NeighbourFragmentFav extends Fragment {
 
     private NeighbourApiService mApiService;
     private List<Neighbour> mNeighbours;
@@ -34,10 +35,10 @@ public class NeighbourFragment extends Fragment {
 
     /**
      * Create and return a new instance
-     * @return @{@link NeighbourFragment}
+     * @return @{@link NeighbourFragmentFav}
      */
-    public static NeighbourFragment newInstance() {
-        NeighbourFragment fragment = new NeighbourFragment();
+    public static NeighbourFragmentFav newInstance() {
+        NeighbourFragmentFav fragment = new NeighbourFragmentFav();
         return fragment;
     }
 
@@ -65,7 +66,7 @@ public class NeighbourFragment extends Fragment {
      */
     private void initList() {
         mNeighbours = mApiService.getNeighbours();
-        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapter(mNeighbours));
+        mRecyclerView.setAdapter(new MyNeighbourRecyclerViewAdapterFavori(mNeighbours));
     }
 
     @Override
@@ -91,20 +92,20 @@ public class NeighbourFragment extends Fragment {
      */
     @Subscribe
     public void onDeleteNeighbour(DeleteNeighbourEvent event) {
-        mApiService.deleteNeighbour(event.neighbour);
+        mApiService.deleteFavNeighbour(event.neighbour);
         initList();
     }
-                    /***Click on listener*/
+            /***Click on listener*/
     public void configureOnClickRecyclerView() {
         ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {
-                        Intent intent = new Intent(getContext(),ActivityInformationNeighbour.class);
+                        Intent intent = new Intent(getContext(), ActivityInformationNeighbour.class);
                         intent.putExtra("infoNeighbour",mNeighbours.get(position));
                         intent.putExtra("position",position);
-                       Log.e(getClass().getSimpleName(),mNeighbours.get(position).getName());
-                       startActivity(intent);
+                        Log.e(getClass().getSimpleName(),mNeighbours.get(position).getName());
+                        startActivity(intent);
                     }
                 });
     }
