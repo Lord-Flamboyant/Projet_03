@@ -22,7 +22,7 @@ import static android.support.test.espresso.matcher.ViewMatchers.hasMinimumChild
 import static com.openclassrooms.entrevoisins.utils.RecyclerViewItemCountAssertion.withItemCount;
 import static org.hamcrest.core.IsNull.notNullValue;
 
-
+/***test instrumentalisé */
 
 /**
  * Test class for list of neighbours
@@ -54,7 +54,6 @@ public class NeighboursListTest {
         onView(ViewMatchers.withId(R.id.list_neighbours))
                 .check(matches(hasMinimumChildCount(1)));
     }
-
     /**
      * When we delete an item, the item is no more shown
      */
@@ -68,4 +67,15 @@ public class NeighboursListTest {
         // Then : the number of element is 11
         onView(ViewMatchers.withId(R.id.list_neighbours)).check(withItemCount(ITEMS_COUNT-1));
     }
+
+    @Test
+    public void neighbourDetailOpen() {}
+
+    @Test
+    public void nameDetailNeighbourIsGood() {}
+
+    @Test
+    public void favOngletHaveOnlyFav() {}
+
+
 }
