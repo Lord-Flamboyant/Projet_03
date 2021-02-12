@@ -26,19 +26,12 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
     public FloatingActionButton mAddFav;
     public ImageView mImageUser;
     public TextView mTittleName;
-    public CardView mCardViewName;
     public TextView mNameNeighbour;
-    public ImageView mMapView;
     public TextView mAdressNeighbour;
-    public ImageView mPhoneView;
     public TextView mNumberPhoneNeighbour;
-    public ImageView mIView;
-    public CardView mCardViewInfo;
-    public TextView mAbout;
     public TextView mDetailView;
     public TextView mAdressNet;
     public Boolean mFavNeighbour;
-    public long mId;
     public int mPosition;
 
 
@@ -52,25 +45,17 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         mPosition = intent.getIntExtra("position",0);
 
 
-        /*** Item view */
         mBackButton = findViewById(R.id.BackButton_view);
         mAddFav = findViewById(R.id.addFav_view);
         mImageUser = findViewById(R.id.imageNeighbour_view);
         mTittleName = findViewById(R.id.titleNameNeighbour_view);
-        mCardViewName = findViewById(R.id.CartViewName);
         mNameNeighbour = findViewById(R.id.nameNeightbour_view);
-        mMapView = findViewById(R.id.map_view);
         mAdressNeighbour = findViewById(R.id.adressNeighbour_view);
-        mPhoneView = findViewById(R.id.phone_view);
         mNumberPhoneNeighbour = findViewById(R.id.numberPhoneNeighbour_view);
-        mIView = findViewById(R.id.i_view);
-        mCardViewInfo = findViewById(R.id.CartViewInfo);
-        mAbout = findViewById(R.id.aPropos_view);
         mDetailView = findViewById(R.id.detail_view);
         mAdressNet = findViewById(R.id.adressNet_view);
 
-
-        /*** item new generation*/
+        /**Item new generation */
         mTittleName.setText(neighbour.getName());
         mNameNeighbour.setText(neighbour.getName());
         Glide.with(mImageUser.getContext())
@@ -82,11 +67,10 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         mAdressNet.setText("Facebook.fr/" + neighbour.getName());
         mDetailView.setText(neighbour.getAboutMe());
         mFavNeighbour = neighbour.getFav(true);
-        mId = neighbour.getId();
 
 
-        /***Star fav true/false */
-        if (mFavNeighbour == true) {
+        /**Star fav true/false */
+        if (mFavNeighbour) {
             mAddFav.setImageResource(R.drawable.ic_star_white_24dp);
 
         } else mAddFav.setImageResource(R.drawable.ic_star_border_white_24dp);
@@ -94,31 +78,25 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
 
 //TODO: change favorite on appli
 
-        /***Click on star for add fav or delete fav */
-        mAddFav.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (neighbour.Fav == false) {
-                    DI.getNeighbourApiService().addFavNeighbour(neighbour);
-                    DI.getNeighbourApiService().getNeighbours().set(mPosition,neighbour);
-                    mAddFav.setImageResource(R.drawable.ic_star_white_24dp);
+        /**Click on star for add fav or delete fav */
+        mAddFav.setOnClickListener(v -> {
+            if (!neighbour.Fav) {
+                DI.getNeighbourApiService().addFavNeighbour(neighbour);
+                DI.getNeighbourApiService().getNeighbours().set(mPosition,neighbour);
+                mAddFav.setImageResource(R.drawable.ic_star_white_24dp);
 
-                } else if (neighbour.Fav == true) {
-                    DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
-                    DI.getNeighbourApiService().getNeighbours().set(mPosition, neighbour);
-                    mAddFav.setImageResource(R.drawable.ic_star_border_white_24dp);
-                }
+            } else if (neighbour.Fav) {
+                DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
+                DI.getNeighbourApiService().getNeighbours().set(mPosition, neighbour);
+                mAddFav.setImageResource(R.drawable.ic_star_border_white_24dp);
             }
         });
 
 
-        /***arrow for back */
-        mBackButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent backView = new Intent(ActivityInformationNeighbour.this, ListNeighbourActivity.class);
-                startActivity(backView);
-            }
+        /**arrow for back */
+        mBackButton.setOnClickListener(v -> {
+            Intent backView = new Intent(ActivityInformationNeighbour.this, ListNeighbourActivity.class);
+            startActivity(backView);
         });
 
     }
