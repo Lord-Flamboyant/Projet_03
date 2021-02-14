@@ -26,6 +26,8 @@ import org.greenrobot.eventbus.Subscribe;
 
 import java.util.List;
 
+import butterknife.OnClick;
+
 public class NeighbourFragmentFav extends Fragment {
 
     private NeighbourApiService mApiService;
@@ -95,9 +97,10 @@ public class NeighbourFragmentFav extends Fragment {
         mApiService.deleteFavNeighbour(event.neighbour);
         initList();
     }
+
             /***Click on listener*/
     public void configureOnClickRecyclerView() {
-        ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour)
+        ItemClickSupport.addTo(mRecyclerView, R.layout.fragment_neighbour_fav)
                 .setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
                     @Override
                     public void onItemClicked(RecyclerView recyclerView, int position, View v) {

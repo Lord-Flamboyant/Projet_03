@@ -76,8 +76,6 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         } else mAddFav.setImageResource(R.drawable.ic_star_border_white_24dp);
 
 
-//TODO: change favorite on appli
-
         /**Click on star for add fav or delete fav */
         mAddFav.setOnClickListener(v -> {
             if (!neighbour.Fav) {
