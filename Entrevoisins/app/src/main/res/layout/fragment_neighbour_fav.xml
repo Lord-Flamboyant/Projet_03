@@ -10,7 +10,7 @@
     android:orientation="vertical">
 
     <ImageView
-        android:id="@+id/item_list_avatar"
+        android:id="@+id/item_list_avatar_fav"
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_marginStart="16dp"
@@ -21,14 +21,14 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/item_list_name"
+        android:id="@+id/item_list_name_fav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/item_list_avatar"
-        app:layout_constraintStart_toEndOf="@+id/item_list_avatar"
-        app:layout_constraintTop_toTopOf="@+id/item_list_avatar" />
+        app:layout_constraintBottom_toBottomOf="@+id/item_list_avatar_fav"
+        app:layout_constraintStart_toEndOf="@+id/item_list_avatar_fav"
+        app:layout_constraintTop_toTopOf="@+id/item_list_avatar_fav" />
 
 
 </android.support.constraint.ConstraintLayout>

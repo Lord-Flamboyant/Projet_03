@@ -58,9 +58,9 @@ public class MyNeighbourRecyclerViewAdapterFavori extends RecyclerView.Adapter<M
 
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        @BindView(R.id.item_list_avatar)
+        @BindView(R.id.item_list_avatar_fav)
         public ImageView mNeighbourAvatar;
-        @BindView(R.id.item_list_name)
+        @BindView(R.id.item_list_name_fav)
         public TextView mNeighbourName;
 
         public ViewHolder(View view) {
