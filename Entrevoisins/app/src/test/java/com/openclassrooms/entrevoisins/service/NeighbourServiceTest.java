@@ -50,6 +50,14 @@ public class NeighbourServiceTest {
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
 
+    @Test
+    public  void createNewNeighbour() {
+        List<Neighbour> neighbours = service.getNeighbours();
+        Neighbour neighbour = DummyNeighbourGenerator.generateNeighbours().get(0);
+        service.createNeighbour(neighbour);
+        assertTrue(service.getNeighbours().contains(neighbour));
+    }
+
 
      @Test
     public void addNeighbourFavorite() {
