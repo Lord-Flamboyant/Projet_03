@@ -2,16 +2,22 @@ package com.openclassrooms.entrevoisins.service;
 
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
+import com.openclassrooms.entrevoisins.ui.neighbour_list.ListNeighbourActivity;
 
+import org.hamcrest.collection.IsArrayContaining;
 import org.hamcrest.collection.IsIterableContainingInAnyOrder;
+import org.hamcrest.core.IsNot;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
 import java.util.List;
+import java.util.regex.Matcher;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
@@ -44,17 +50,22 @@ public class NeighbourServiceTest {
         assertFalse(service.getNeighbours().contains(neighbourToDelete));
     }
 
-    @Test
-    public void createdNewNeighbour() {
 
-    }
-
-    @Test
+     @Test
     public void addNeighbourFavorite() {
-
+         List<Neighbour> neighbours = service.getFavNeighbours();
+         Neighbour neighbour = service.getNeighbours().get(0);
+         service.addFavNeighbour(neighbour);
+         assertTrue(neighbours.contains(neighbour));
     }
 
     @Test
     public void deleteFavNeighbour() {
+        List<Neighbour> neighbours = service.getFavNeighbours();
+        Neighbour neighbour = service.getNeighbours().get(0);
+        Neighbour neighbour1 = service.getNeighbours().get(1);
+        service.addFavNeighbour(neighbour);
+        service.deleteFavNeighbour(neighbour);
+        assertFalse(neighbours.contains(neighbour));
     }
 }
