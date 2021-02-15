@@ -211,6 +211,8 @@ public class NeighboursListTest {
                                     1),
                             isDisplayed()));
             viewPager.perform(swipeLeft());
+
+            onView(allOf(withId(R.id.list_neighbours),isDisplayed())).check(withItemCount(3));
         }
 
         private static Matcher<View> childAtPosition (
