@@ -1,5 +1,6 @@
 package com.openclassrooms.entrevoisins.ui.neighbour_list;
 
+import android.content.Context;
 import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 import com.bumptech.glide.Glide;
@@ -68,6 +70,12 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         mDetailView.setText(neighbour.getAboutMe());
         mFavNeighbour = neighbour.getFav(true);
 
+        /***toast*/
+        Context context = getApplicationContext();
+        CharSequence textadd = neighbour.getName() + " est ajouté aux favoris";
+        CharSequence textdelet = neighbour.getName() + " est retiré des favoris";
+        int duration = Toast.LENGTH_SHORT;
+
 
         /**Star fav true/false */
         if (mFavNeighbour) {
@@ -82,11 +90,13 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
                 DI.getNeighbourApiService().addFavNeighbour(neighbour);
                 DI.getNeighbourApiService().getNeighbours().set(mPosition,neighbour);
                 mAddFav.setImageResource(R.drawable.ic_star_white_24dp);
+                Toast.makeText(context,textadd,duration).show();
 
             } else if (neighbour.Fav) {
                 DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
                 DI.getNeighbourApiService().getNeighbours().set(mPosition, neighbour);
                 mAddFav.setImageResource(R.drawable.ic_star_border_white_24dp);
+                Toast.makeText(context,textdelet,duration).show();
             }
         });
 
