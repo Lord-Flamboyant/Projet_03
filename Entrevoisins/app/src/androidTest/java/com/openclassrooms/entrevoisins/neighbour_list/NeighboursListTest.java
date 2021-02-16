@@ -113,7 +113,7 @@ public class NeighboursListTest {
         textView.check(matches(withText("Jack")));
     }
 
-    /***Test for watchinf if on favorites tab is only favorites neighbour*/
+    /***Test for watching if on favorites tab is only favorites neighbour*/
     @Test
     public void favtabHaveOnlyFav() {
             ViewInteraction recyclerView = onView(
