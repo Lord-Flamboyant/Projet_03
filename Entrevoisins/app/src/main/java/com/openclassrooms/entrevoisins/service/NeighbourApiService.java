@@ -36,6 +36,6 @@ public interface NeighbourApiService {
 
     void deleteFavNeighbour(Neighbour neighbour);
 
-    /***List favorites neighbours */
+    /***List favorites neighbour */
     List<Neighbour> getFavNeighbours();
 }
