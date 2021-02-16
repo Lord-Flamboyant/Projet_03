@@ -71,7 +71,6 @@ public class NeighbourServiceTest {
     public void deleteFavNeighbour() {
         List<Neighbour> neighbours = service.getFavNeighbours();
         Neighbour neighbour = service.getNeighbours().get(0);
-        Neighbour neighbour1 = service.getNeighbours().get(1);
         service.addFavNeighbour(neighbour);
         service.deleteFavNeighbour(neighbour);
         assertFalse(neighbours.contains(neighbour));
