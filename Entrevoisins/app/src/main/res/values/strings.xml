@@ -3,4 +3,31 @@
     <string name="tab_neighbour_title">My neighbours</string>
     <string name="tab_favorites_title">Favorites</string>
     <string name="activity_new_neighbour">New neighbour</string>
+
+    //-----Text view -----//
+    <string name="text_view">TextView</string>
+
+    //----- Neighbour fragment -----//
+    <string name="delete">Delete neighbour</string>
+
+    //----- Neighbour fav fragment -----//
+    <string name="remove_this_neighbour_favorites_list">Remove this neighbour to your favorites list</string>
+
+    //----- Add activity neighbour -----//
+    <string name="name">Name</string>
+    <string name="phone_number">Phone number</string>
+    <string name="address">Address</string>
+    <string name="about_me">About me</string>
+    <string name="save">Save</string>
+
+    //----- Topbar -----//
+    <string name="my_neighbour">MY NEIGHBOUR</string>
+    <string name="favorites">FAVORITES</string>
+
+    //----- Information neighbour -----//
+    <string name="add_fav">Neighbour add to favorites list</string>
+    <string name="remove_fav">Neighbour delete to favorites list</string>
+
+
+
 </resources>
