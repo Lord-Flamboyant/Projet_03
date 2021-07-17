@@ -24,6 +24,9 @@
     <string name="my_neighbour">MY NEIGHBOUR</string>
     <string name="favorites">FAVORITES</string>
 
+    //----- Information neighbour -----//
+    <string name="add_fav">Neighbour add to favorites list</string>
+    <string name="remove_fav">Neighbour delete to favorites list</string>
 
 
 

@@ -52,7 +52,7 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
     @RequiresApi(api = Build.VERSION_CODES.M)
     private void uploadNeighbourInformation(Neighbour neighbour) {
         mBinding.titleNameNeighbourView.setText(neighbour.getName());
-        mBinding.nameNeightbourView.setText(neighbour.getName());
+        mBinding.nameNeighbourView.setText(neighbour.getName());
         Glide.with(mBinding.imageNeighbourView.getContext())
                 .load(neighbour.getAvatarUrl())
                 .apply(RequestOptions.centerCropTransform())
@@ -83,11 +83,11 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
             if (!neighbour.getFav()) {
                 DI.getNeighbourApiService().addFavNeighbour(neighbour);
                 mBinding.addFavView.setImageResource(R.drawable.ic_star_white_24dp);
-                Toast.makeText(this, "Neighbour add to favorites list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.add_fav), Toast.LENGTH_SHORT).show();
             } else  {
                 DI.getNeighbourApiService().deleteFavNeighbour(neighbour);
                 mBinding.addFavView.setImageResource(R.drawable.ic_star_border_white_24dp);
-                Toast.makeText(this, "Neighbour delete to favorites list", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getResources().getString(R.string.remove_fav), Toast.LENGTH_SHORT).show();
             }
             mBinding.addFavView.setImageTintList(ColorStateList.valueOf(getColor(R.color.yellow)));
             DI.getNeighbourApiService().getNeighbours().set(position, neighbour);
