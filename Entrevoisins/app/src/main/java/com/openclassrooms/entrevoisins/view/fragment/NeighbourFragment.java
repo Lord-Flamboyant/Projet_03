@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.DividerItemDecoration;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import com.openclassrooms.entrevoisins.R;
 import com.openclassrooms.entrevoisins.databinding.FragmentNeighbourListBinding;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
@@ -72,7 +73,7 @@ public class NeighbourFragment extends Fragment implements DeleteNeighbour {
     //----- delete neighbour -----//
     @Override
     public void clickOnTrash(Neighbour neighbour) {
-        Toast.makeText(getContext(), "delete neighbour", Toast.LENGTH_SHORT).show();
+        Toast.makeText(getContext(), getResources().getString(R.string.delete), Toast.LENGTH_SHORT).show();
         DI.getNeighbourApiService().deleteNeighbour(neighbour);
         initList();
     }

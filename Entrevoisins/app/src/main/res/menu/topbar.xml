@@ -3,13 +3,13 @@
 
     <item
         android:id="@+id/neighbours_tabs"
-        android:title="MY NEIGHBOURS"
+        android:title="@string/my_neighbour"
         android:enabled="true">
     </item>
 
     <item
         android:id="@+id/favorite_tab"
-        android:title="FAVORITES"
+        android:title="@string/favorites"
         android:enabled="true">
 
     </item>
