@@ -28,8 +28,8 @@ public class Neighbour implements Parcelable {
     /** About me */
     private String aboutMe;
 
-    /** Favori*/
-    public Boolean Fav;
+    /** Favorite */
+    public boolean fav = false;
 
     /**
      * Constructor
@@ -38,14 +38,14 @@ public class Neighbour implements Parcelable {
      * @param avatarUrl
      */
     public Neighbour(long id, String name, String avatarUrl, String address,
-                     String phoneNumber, String aboutMe, Boolean Fav) {
+                     String phoneNumber, String aboutMe, boolean fav) {
         this.id = id;
         this.name = name;
         this.avatarUrl = avatarUrl;
         this.address = address;
         this.phoneNumber = phoneNumber;
         this.aboutMe = aboutMe;
-        this.Fav = Fav;
+        this.fav = fav;
     }
 
     protected Neighbour(Parcel in) {
@@ -56,7 +56,7 @@ public class Neighbour implements Parcelable {
         phoneNumber = in.readString();
         aboutMe = in.readString();
         byte tmpFav = in.readByte();
-        Fav = tmpFav == 0 ? null : tmpFav == 1;
+        fav = (tmpFav == 0) ? null : (tmpFav == 1);
     }
 
     @Override
@@ -67,7 +67,7 @@ public class Neighbour implements Parcelable {
         dest.writeString(address);
         dest.writeString(phoneNumber);
         dest.writeString(aboutMe);
-        dest.writeByte((byte) (Fav == null ? 0 : Fav ? 1 : 2));
+        dest.writeByte((byte) (fav ? 1 : 2));
     }
 
     @Override
@@ -135,12 +135,13 @@ public class Neighbour implements Parcelable {
         this.aboutMe = aboutMe;
     }
 
-    public Boolean getFav(boolean b) {
-        return Fav;
+
+    public boolean getFav() {
+        return fav;
     }
 
-    public void setFav(boolean b) {
-        this.Fav = Fav;
+    public void setFav(boolean fav) {
+        this.fav = fav;
     }
 
     @Override

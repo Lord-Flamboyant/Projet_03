@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:background="#EFEFEF"
-    tools:context=".ui.neighbour_list.ActivityInformationNeighbour">
+    tools:context=".view.activity.ActivityInformationNeighbour">
 
 
     <ImageView
@@ -14,23 +14,25 @@
         android:layout_height="200dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:contentDescription="@null" />
 
     <ImageButton
         android:id="@+id/BackButton_view"
         android:layout_width="44dp"
         android:layout_height="37dp"
         android:backgroundTint="#00FFFFFF"
-        android:tint="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="@+id/imageNeighbour_view"
+        app:layout_constraintBottom_toTopOf="@+id/titleNameNeighbour_view"
         app:layout_constraintEnd_toEndOf="@id/imageNeighbour_view"
-        app:layout_constraintHorizontal_bias="0.036"
+        app:layout_constraintHorizontal_bias="0.04"
         app:layout_constraintStart_toStartOf="@+id/imageNeighbour_view"
         app:layout_constraintTop_toTopOf="@+id/imageNeighbour_view"
-        app:layout_constraintVertical_bias="0.086"
-        app:srcCompat="?attr/homeAsUpIndicator" />
+        app:layout_constraintVertical_bias="0.100000024"
+        app:srcCompat="?attr/homeAsUpIndicator"
+        app:tint="#FFFFFF"
+        android:contentDescription="@null" />
 
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/addFav_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -44,7 +46,10 @@
         app:layout_constraintHorizontal_bias="0.98"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_star_border_white_24dp" />
+        app:srcCompat="@drawable/ic_star_border_white_24dp"
+        android:contentDescription="@null"
+        android:focusable="true"
+        tools:ignore="RtlHardcoded" />
 
     <TextView
         android:id="@+id/titleNameNeighbour_view"
@@ -61,16 +66,18 @@
         app:layout_constraintVertical_bias="1.0" />
 
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/CartViewName"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="240dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="8dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageNeighbour_view">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
 
@@ -92,14 +99,15 @@
                 android:id="@+id/map_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/nameNeightbour_view"
                 app:layout_constraintVertical_bias="0.18"
-                app:srcCompat="@drawable/ic_baseline_location_on_24" />
+                app:srcCompat="@drawable/ic_baseline_location_on_24"
+                app:tint="@color/colorAccent"
+                android:contentDescription="@null" />
 
             <TextView
                 android:id="@+id/adressNeighbour_view"
@@ -116,14 +124,15 @@
                 android:id="@+id/phone_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/map_view"
                 app:layout_constraintVertical_bias="0.18"
-                app:srcCompat="@android:drawable/stat_sys_phone_call" />
+                app:srcCompat="@android:drawable/stat_sys_phone_call"
+                app:tint="@color/colorAccent"
+                android:contentDescription="@null" />
 
             <TextView
                 android:id="@+id/numberPhoneNeighbour_view"
@@ -141,14 +150,15 @@
                 android:id="@+id/i_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
-                android:tint="@color/colorAccent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/phone_view"
                 app:layout_constraintVertical_bias="0.32999998"
-                app:srcCompat="@drawable/ic_baseline_language_24" />
+                app:srcCompat="@drawable/ic_baseline_language_24"
+                app:tint="@color/colorAccent"
+                android:contentDescription="@null" />
 
             <TextView
                 android:id="@+id/adressNet_view"
@@ -161,20 +171,22 @@
                 app:layout_constraintStart_toEndOf="@+id/i_view"
                 app:layout_constraintTop_toTopOf="@+id/i_view"
                 app:layout_constraintVertical_bias="0.50" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:id="@+id/CartViewInfo"
-        android:layout_width="380dp"
+        android:layout_width="0dp"
         android:layout_height="210dp"
+        android:layout_marginStart="15dp"
         android:layout_marginTop="16dp"
+        android:layout_marginEnd="15dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/CartViewName">
 
-        <android.support.constraint.ConstraintLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="210dp">
 
@@ -203,8 +215,8 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/aPropos_view"
                 app:layout_constraintVertical_bias="0.15" />
-        </android.support.constraint.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </android.support.v7.widget.CardView>
+    </androidx.cardview.widget.CardView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

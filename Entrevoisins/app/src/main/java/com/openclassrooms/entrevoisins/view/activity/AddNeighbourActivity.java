@@ -1,56 +1,43 @@
-package com.openclassrooms.entrevoisins.ui.neighbour_list;
+package com.openclassrooms.entrevoisins.view.activity;
 
 import android.content.Intent;
-import android.support.design.button.MaterialButton;
-import android.support.design.widget.TextInputLayout;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.app.FragmentActivity;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.view.MenuItem;
-import android.widget.ImageView;
+import android.view.View;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.FragmentActivity;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.openclassrooms.entrevoisins.R;
+import com.openclassrooms.entrevoisins.databinding.ActivityAddNeighbourBinding;
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
-import com.openclassrooms.entrevoisins.service.DummyNeighbourApiService;
 import com.openclassrooms.entrevoisins.service.NeighbourApiService;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
+import java.util.Objects;
 
 public class AddNeighbourActivity extends AppCompatActivity {
 
-    @BindView(R.id.avatar)
-    ImageView avatar;
-    @BindView(R.id.nameLyt)
-    TextInputLayout nameInput;
-    @BindView(R.id.phoneNumberLyt)
-    TextInputLayout phoneInput;
-    @BindView(R.id.addressLyt)
-    TextInputLayout addressInput;
-    @BindView(R.id.aboutMeLyt)
-    TextInputLayout aboutMeInput;
-    @BindView(R.id.create)
-    MaterialButton addButton;
-
     private NeighbourApiService mApiService;
+    private ActivityAddNeighbourBinding mBinding;
     private String mNeighbourImage;
-    private Boolean Fav;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_add_neighbour);
-        ButterKnife.bind(this);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        mBinding = ActivityAddNeighbourBinding.inflate(getLayoutInflater());
+        View view = mBinding.getRoot();
+        setContentView(view);
+
+        Objects.requireNonNull(getSupportActionBar()).setDisplayHomeAsUpEnabled(true);
         mApiService = DI.getNeighbourApiService();
         init();
+        createNeighbour();
     }
 
     @Override
@@ -69,34 +56,36 @@ public class AddNeighbourActivity extends AppCompatActivity {
         Glide.with(this)
                 .load(mNeighbourImage)
                 .placeholder(R.drawable.ic_account)
-                .apply(RequestOptions.circleCropTransform()).into(avatar);
-        nameInput.getEditText().addTextChangedListener(new TextWatcher() {
+                .apply(RequestOptions.circleCropTransform()).into(mBinding.avatar);
+        mBinding.nameLyt.getEditText().addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) { }
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) { }
             @Override
             public void afterTextChanged(Editable s) {
-                addButton.setEnabled(s.length() > 0);
+                mBinding.create.setEnabled(s.length() > 0);
             }
         });
 
     }
 
-    @OnClick(R.id.create)
-    void addNeighbour() {
-        Neighbour neighbour = new Neighbour(
-                System.currentTimeMillis(),
-                nameInput.getEditText().getText().toString(),
-                mNeighbourImage,
-                addressInput.getEditText().getText().toString(),
-                phoneInput.getEditText().getText().toString(),
-                aboutMeInput.getEditText().getText().toString(),
-                Fav=false
-        );
-        mApiService.createNeighbour(neighbour);
-        finish();
+    private void createNeighbour() {
+        mBinding.create.setOnClickListener(v -> {
+            Neighbour neighbour = new Neighbour(
+                    System.currentTimeMillis(),
+                    mBinding.nameLyt.getEditText().getText().toString(),
+                    mNeighbourImage,
+                    mBinding.addressLyt.getEditText().getText().toString(),
+                    mBinding.phoneNumberLyt.getEditText().getText().toString(),
+                    mBinding.aboutMeLyt.getEditText().getText().toString(),
+                    false
+            );
+            mApiService.createNeighbour(neighbour);
+            finish();
+        });
     }
+
 
     /**
      * Generate a random image. Useful to mock image picker

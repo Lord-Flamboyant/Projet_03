@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/neighbours_tabs"
+        android:title="MY NEIGHBOURS"
+        android:enabled="true">
+    </item>
+
+    <item
+        android:id="@+id/favorite_tab"
+        android:title="FAVORITES"
+        android:enabled="true">
+
+    </item>
+
+
+</menu>
