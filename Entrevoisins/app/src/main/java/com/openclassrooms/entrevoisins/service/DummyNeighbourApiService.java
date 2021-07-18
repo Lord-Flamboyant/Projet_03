@@ -42,6 +42,7 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         if (!neighbour.getFav()) {
             neighbour.setFav(true);
         }
+        setNeighbour(neighbour);
     }
 
     /***delete favorite */
@@ -50,6 +51,16 @@ public class DummyNeighbourApiService implements  NeighbourApiService {
         if (neighbour.getFav()) {
             neighbour.setFav(false);
         }
+        setNeighbour(neighbour);
     }
+
+    /*** Set neighbour */
+    @Override
+    public void setNeighbour(Neighbour neighbour) {
+        neighbours.set(neighbours.indexOf(neighbour),neighbour);
+    }
+
+
+
 }
 

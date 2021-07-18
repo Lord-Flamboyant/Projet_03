@@ -99,6 +99,7 @@
                 android:id="@+id/map_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
@@ -106,8 +107,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/nameNeighbour_view"
                 app:layout_constraintVertical_bias="0.18"
                 app:srcCompat="@drawable/ic_baseline_location_on_24"
-                app:tint="@color/colorAccent"
-                android:contentDescription="@null" />
+                app:tint="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/adressNeighbour_view"
@@ -124,6 +124,7 @@
                 android:id="@+id/phone_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
@@ -131,8 +132,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/map_view"
                 app:layout_constraintVertical_bias="0.18"
                 app:srcCompat="@android:drawable/stat_sys_phone_call"
-                app:tint="@color/colorAccent"
-                android:contentDescription="@null" />
+                app:tint="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/numberPhoneNeighbour_view"
@@ -150,6 +150,7 @@
                 android:id="@+id/i_view"
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                android:contentDescription="@null"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.028"
@@ -157,8 +158,7 @@
                 app:layout_constraintTop_toBottomOf="@+id/phone_view"
                 app:layout_constraintVertical_bias="0.32999998"
                 app:srcCompat="@drawable/ic_baseline_language_24"
-                app:tint="@color/colorAccent"
-                android:contentDescription="@null" />
+                app:tint="@color/colorAccent" />
 
             <TextView
                 android:id="@+id/adressNet_view"
@@ -178,17 +178,20 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/CartViewInfo"
         android:layout_width="0dp"
-        android:layout_height="210dp"
+        android:layout_height="0dp"
         android:layout_marginStart="15dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="10dp"
         android:layout_marginEnd="15dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CartViewName">
+        app:layout_constraintTop_toBottomOf="@+id/CartViewName"
+        app:layout_constraintVertical_bias="0.10">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="210dp">
+            android:layout_height="match_parent">
 
             <TextView
                 android:id="@+id/about_me_view_info"

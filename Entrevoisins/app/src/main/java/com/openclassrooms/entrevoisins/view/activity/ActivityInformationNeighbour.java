@@ -18,7 +18,6 @@ import com.openclassrooms.entrevoisins.databinding.ActivityInformationNeighbourB
 import com.openclassrooms.entrevoisins.di.DI;
 import com.openclassrooms.entrevoisins.model.Neighbour;
 
-
 public class ActivityInformationNeighbour extends AppCompatActivity {
 
     private ActivityInformationNeighbourBinding mBinding;
@@ -36,7 +35,9 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         int position = intent.getIntExtra("position", 0);
 
         uploadNeighbourInformation(neighbour);
+
         updateFavoriteOrNot(neighbour, position);
+
         clickOnBack();
     }
 
@@ -61,6 +62,8 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
         mBinding.numberPhoneNeighbourView.setText(neighbour.getPhoneNumber());
         mBinding.adressNetView.setText("Facebook.fr/" + neighbour.getName());
         mBinding.detailView.setText(neighbour.getAboutMe());
+
+
 
         uploadStar(neighbour);
     }
@@ -89,8 +92,9 @@ public class ActivityInformationNeighbour extends AppCompatActivity {
                 mBinding.addFavView.setImageResource(R.drawable.ic_star_border_white_24dp);
                 Toast.makeText(this, getResources().getString(R.string.remove_fav), Toast.LENGTH_SHORT).show();
             }
+            //DI.getNeighbourApiService().setNeighbour(neighbour);
             mBinding.addFavView.setImageTintList(ColorStateList.valueOf(getColor(R.color.yellow)));
-            DI.getNeighbourApiService().getNeighbours().set(position, neighbour);
+
 
         });
     }
